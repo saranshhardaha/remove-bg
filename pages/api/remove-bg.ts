@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import nextConnect from 'next-connect';
+import cors from 'cors';
 import multer from 'multer';
 import path from 'path';
 import fs from 'fs/promises';
@@ -29,9 +30,8 @@ const apiRoute = nextConnect<NextApiRequest, NextApiResponse>({
     res.status(405).json({ error: 'Method not allowed' });
   },
 });
-
+apiRoute.use(cors());
 apiRoute.use((req, res, next) => {
-  console.log(`[Middleware] ${req.method} ${req.url}`);
   next();
 });
 
