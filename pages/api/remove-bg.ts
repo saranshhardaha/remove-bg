@@ -17,7 +17,7 @@ const upload = multer({
       cb(null, filename);
     },
   }),
-  limits: { fileSize: 10 * 1024 * 1024 }, // 10MB
+  limits: { fileSize: 15 * 1024 * 1024 }, // 15MB
 });
 
 const apiRoute = nextConnect<NextApiRequest, NextApiResponse>({
